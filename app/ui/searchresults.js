@@ -1,24 +1,14 @@
 import SongDetails from 'app/ui/songdetails';
+import Database from 'better-sqlite3';
 
-function SearchResults({artist}) {
-    
-    // This should actually come from a database, change the code so it does
-    // Just create some fake data for now
-    const fakeData = [ {
-        "id": 1,
-        "song": "Imagine",
-        "artist": "John Lennon",
-        "year": 1971
-    }, {
-        "id" : 2,
-        "song": "(Just Like) Starting Over",
-        "artist": "John Lennon",
-        "year" : 1980
-    } ];
+export default function SearchResults({artist}) {
 
-    const output = fakeData.map ( song => <SongDetails key={song.id} song={song} /> );
+    const db = new Database("assets/wadsongs.db");    
+
+    const stmt = db.prepare("SELECT * FROM wadsongs WHERE artist=? ORDER BY id");
+    const results = stmt.all(artist);
+
+    const output = results.map ( song => <SongDetails key={song.id} song={song} /> );
 
     return <div>{output}</div>;
 }
-
-export default SearchResults;    

@@ -1,10 +1,8 @@
-function Page() {
+export default function Page() {
 	return (
 		<div>
 		<h2>Welcome to HitTastic!</h2>
-		<p>HitTastic! is the web's top music site, etc. etc. etc.</p>
+		<p>Search for and buy your favourite music!</p>
 		</div>
 	);
 }
-
-export default Page;

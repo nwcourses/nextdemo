@@ -1,24 +1,22 @@
 "use client"
 
-import { useFormState } from 'react-dom';
+import { useActionState } from 'react';
 import createSong from 'app/actions/createSong';
 
-function AjaxAddSong() {
-    const [state, actionCreateSong ] = useFormState(createSong, { id: 0 } );
+export default function AddSong() {
+    const [state, actionCreateSong ] = useActionState(createSong, { id: 0 } );
     
     return(
         <div>
-        <h2>AJAX Add Song</h2>
-        Song ID: { state.id } Status: { state.status }
+        <h2>Add Song</h2>
+        { state.id ? "Song ID: " + state.id : "" } <strong>{ state.status }</strong>
         <form action={actionCreateSong}>
-        Title: <input name="title" /><br />
-        Artist: <input name="artist" /><br />
-        Year: <input name="year" /><br />
+        Title:<br /> <input name="title" /><br />
+        Artist:<br /> <input name="artist" /><br />
+        Year:<br /> <input name="year" /><br />
         <input type="submit" value="Add song!" />
         </form>
         </div>
     );
 }
-
-export default AjaxAddSong;
 
