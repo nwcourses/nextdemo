@@ -1,8 +1,8 @@
 export default function Page() {
     return (
         <div>
-        <h2>Welcome to HitTastic!</h2>
-        <p>Search for and buy your favourite music!</p>
+        <h1>Hello Next.js!</h1>
+        <p><a href='hittastic/'>Go to HitTastic!</a></p>
         </div>
     );
 }
